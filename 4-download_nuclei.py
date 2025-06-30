@@ -17,6 +17,17 @@ def download_file(url, dest):
     else:
         raise Exception(f"Failed to download file: {url}")
 
+def unzip_file(zip_path, extract_to='.'):
+    with zipfile.ZipFile(zip_path,'r') as zip_ref:
+        zip_ref.extractall(extract_to)
+
+def rename_and_make_executable(binary_name, target_name='nuclei'):
+    if os.path.exists(binary_name):
+        os.rename(binary_name, target_name)
+        os.chmod(target_name, os.stat(target_name).st_mode | stat.S_IEXEC)
+    else:
+        raise FileNotFoundError(f"{binary_name} not found")
+
 def main():
     release = get_latest_release()
     assets = release['assets']
@@ -25,6 +36,7 @@ def main():
     for asset in assets:
         if 'linux' in asset['name'] and 'amd64' in asset['name'] and asset['name'].endswith('.zip'):
             download_url = asset['browser_download_url']
+            binary_name = asset['name'].replace('.zip','')
             break
 
     if not download_url:
@@ -36,6 +48,12 @@ def main():
     download_file(download_url, dest_file)
 
     print("Downloaded Nuclei ZIP file")
+
+    unzip_file(dest_file)
+    print("Unzipped Nuclei")
+
+    rename_and_make_executable(binary_name,'nuclei')
+    print("Renamed and made executable: nuclei")
 
 if __name__ == "__main__":
     main()
