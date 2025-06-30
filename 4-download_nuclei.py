@@ -1,4 +1,7 @@
 import requests
+import zipfile
+import os
+import stat
 
 def get_latest_release():
     url = "https://api.github.com/repos/projectdiscovery/nuclei/releases/latest"
