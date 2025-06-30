@@ -37,7 +37,6 @@ jobs:
             python 1-clone_repos.py
             python 2-delete_duplicated.py
             python 3-move_file.py
-            python 4-download_nuclei.py
             python 5-check_poc.py
             python 6-get_count.py
             python 7-get_pocname.py
