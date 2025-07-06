@@ -24,12 +24,6 @@ def unzip_file(zip_path, extract_to='.'):
     with zipfile.ZipFile(zip_path,'r') as zip_ref:
         zip_ref.extractall(extract_to)
 
-def make_executable(binary_name):
-    if os.path.exists(binary_name):
-        os.chmod(binary_name, os.stat(binary_name).st_mode | stat.S_IEXEC)
-    else:
-        raise FileNotFoundError(f"{binary_name} not found")
-
 def main():
     release = get_latest_release()
     assets = release['assets']
@@ -53,9 +47,6 @@ def main():
 
     unzip_file(dest_file)
     print("Unzipped Nuclei")
-
-    make_executable('nuclei')
-    print("made executable: nuclei")
 
 if __name__ == "__main__":
     main()
