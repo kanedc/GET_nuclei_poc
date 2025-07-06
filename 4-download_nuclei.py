@@ -55,7 +55,7 @@ def main():
     print("Unzipped Nuclei")
 
     make_executable('nuclei')
-    print("Renamed and made executable: nuclei")
+    print("made executable: nuclei")
 
 if __name__ == "__main__":
     main()
