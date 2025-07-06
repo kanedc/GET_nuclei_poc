@@ -24,10 +24,9 @@ def unzip_file(zip_path, extract_to='.'):
     with zipfile.ZipFile(zip_path,'r') as zip_ref:
         zip_ref.extractall(extract_to)
 
-def rename_and_make_executable(binary_name, target_name='nuclei'):
+def make_executable(binary_name):
     if os.path.exists(binary_name):
-        os.rename(binary_name, target_name)
-        os.chmod(target_name, os.stat(target_name).st_mode | stat.S_IEXEC)
+        os.chmod(binary_name, os.stat(binary_name).st_mode | stat.S_IEXEC)
     else:
         raise FileNotFoundError(f"{binary_name} not found")
 
@@ -55,7 +54,7 @@ def main():
     unzip_file(dest_file)
     print("Unzipped Nuclei")
 
-    rename_and_make_executable(binary_name,'nuclei')
+    make_executable('nuclei')
     print("Renamed and made executable: nuclei")
 
 if __name__ == "__main__":
