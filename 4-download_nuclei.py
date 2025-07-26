@@ -54,7 +54,7 @@ def main():
         result = subprocess.run(command,check=True,capture_output=True,text=True)
         print(f"命令'{' '.join(command)}'执行成功。")
     except FileNotFoundError:
-    print("错误：'chmod' 命令未找到。请确保你在一个类 Unix 系统 (Linux, macOS) 上运行。")
+    print("错误：'chmod' 命令未找到。")
     except subprocess.CalledProcessError as e:
         print(f"命令执行失败，返回码: {e.returncode}")
         print("错误信息:", e.stderr)
