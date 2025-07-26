@@ -26,7 +26,7 @@ def move_file(src, dest):
                 new_dest = f"{base}_{counter}{ext}"
             dest = new_dest
         shutil.move(src, dest)
-        print(f"poc校验成功，已移动文件: {src} -> {dest}")
+        #print(f"poc校验成功，已移动文件: {src} -> {dest}")
     except Exception as e:
         print(f"移动文件出错: {src} -> {dest}, 错误: {e}")
 
