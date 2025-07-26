@@ -19,7 +19,7 @@ def find_and_remove_duplicates(directory):
                 file_hash = calculate_file_hash(filepath)
 
                 if file_hash in hash_map:
-                    print(f"删除重复文件: {filepath}")
+                    #print(f"删除重复文件: {filepath}")
                     os.remove(filepath)
                 else:
                     hash_map[file_hash] = filepath
