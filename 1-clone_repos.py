@@ -31,7 +31,7 @@ for url in urls:
         continue
 
     if os.path.isdir(target_dir):
-        print(f"更新 {repo_name} 在 {target_dir}")
+        #print(f"更新 {repo_name} 在 {target_dir}")
         try:
             result = os.system(f"git -C {target_dir} pull")
             if result != 0:
@@ -39,7 +39,7 @@ for url in urls:
         except Exception as e:
             print(f"更新仓库 {repo_name} 在 {target_dir} 时出错: {e}")
     else:
-        print(f"克隆 {repo_name} 到 {target_dir}")
+        #print(f"克隆 {repo_name} 到 {target_dir}")
         try:
             result = os.system(f"git clone {url} {target_dir}")
             if result != 0:
